@@ -6,19 +6,23 @@ export const packetParser = (data) => {
     const protoMessages = getProtoMessages();
     const commonPacket = protoMessages.common.Packet;
     let packet
+    
+    
 
     try {
         packet = commonPacket.decode(data);
     } catch (e) {
-        console.error(e);
+        console.error("Socket Decode " + e);
     }
+
+    console.log(packet)
 
     const handlerId = packet.handlerId;
     const userId = packet.userId;
     const clientVersion = packet.clientVersion;
     const sequence = packet.sequence;
 
-    if(clientVersion != config.clientVersion){
+    if(clientVersion != config.client.version){
         throw Error();
     }
 
@@ -27,7 +31,7 @@ export const packetParser = (data) => {
         throw Error();
     }
 
-    const [namespace, typeName] = protoTypepe.split(',');
+    const [namespace, typeName] = protoType.split('.');
     const payloadType = protoMessages[namespace][typeName];
     let payload
 
