@@ -6,8 +6,6 @@ export const packetParser = (data) => {
     const protoMessages = getProtoMessages();
     const commonPacket = protoMessages.common.Packet;
     let packet
-    
-    
 
     try {
         packet = commonPacket.decode(data);
@@ -32,13 +30,15 @@ export const packetParser = (data) => {
     }
 
     const [namespace, typeName] = protoType.split('.');
+    console.log(namespace, typeName)
     const payloadType = protoMessages[namespace][typeName];
+    
     let payload
 
     try{
-        payload = payloadType.decode[packet.payload];
+        payload = payloadType.decode(packet.payload);
     } catch (e) {
-        cobsole.error(e);
+        console.error("decode Error : " + e);
     }
 
     const expectedFields = Object.keys(payloadType.fields);

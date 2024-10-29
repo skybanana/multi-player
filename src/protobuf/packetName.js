@@ -11,4 +11,9 @@ export const packetNames = {
     gameNotification: {
       LocationUpdate: 'gameNotification.LocationUpdate',
     },
+    game: {
+      CreateGamePayload: 'game.CreateGamePayload',
+      JoinGamePayload: 'game.JoinGamePayload',
+      LocationUpdatePayload: 'game.LocationUpdatePayload',
+    }
   };
