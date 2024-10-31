@@ -11,18 +11,16 @@ class LatencyManager {
   }
 
   removeUser(userId) {
-    if (this.intervals.has(userId)) {
-      const userIntervals = this.intervals.get(userId);
-      userIntervals.forEach((intervalId) => clearInterval(intervalId));
-      this.intervals.delete(userId);
+    if (!this.intervals.has(userId)) {
+      return;
     }
+    clearInterval(this.intervals.get(userId));
   }
 
   clearAll() {
-    this.intervals.forEach((userIntervals) => {
-      userIntervals.forEach((intervalId) => clearInterval(intervalId));
+    this.intervals.forEach((interval) => {
+      clearInterval(interval);
     });
-    this.intervals.clear();
   }
 }
 
