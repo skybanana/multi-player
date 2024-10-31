@@ -1,8 +1,10 @@
 
 class User {
-  constructor(id, socket) {
-    this.id = id;
+  constructor(socket, id, playerId, latency) {
     this.socket = socket;
+    this.id = id;
+    this.playerId = playerId
+    this.latency = latency
     this.x = 0;
     this.y = 0;
     this.sequence = 0;
@@ -13,10 +15,6 @@ class User {
     this.x = x;
     this.y = y;
     this.lastUpdateTime = Date.now();
-  }
-
-  getNextSequence() {
-    return ++this.sequence;
   }
 
   handlePong(data) {

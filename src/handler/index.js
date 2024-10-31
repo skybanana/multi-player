@@ -1,20 +1,14 @@
 import { HANDLER_IDS } from "../constants/handlerIds.js"
+import locationUpdateHandler from "./game/locationUpdate.handler.js"
+import initialHandler from "./user/initial.handler.js"
 
 const handlers = {
     [HANDLER_IDS.INITIAL] : {
-        handler: 1,
+        handler: initialHandler,
         protoType : 'initial.InitialPacket'
     },
-    [HANDLER_IDS.CREATE_GAME]: {
-        handler: 1,
-        protoType: 'game.CreateGamePayload',
-    },
-    [HANDLER_IDS.JOIN_GAME]: {
-        handler: 1,
-        protoType: 'game.JoinGamePayload',
-    },
     [HANDLER_IDS.UPDATE_LOCATION]: {
-        handler: 1,
+        handler: locationUpdateHandler,
         protoType: 'game.LocationUpdatePayload',
     },
 }
@@ -27,3 +21,11 @@ export const getProtoTypeByHandlerId = (handlerId) => {
 
     return handlers[handlerId].protoType;
 }
+
+export const getHandlerById = (handlerId) => {
+    if (!handlers[handlerId]) {
+        console.log(handlerId+" not found")
+        throw new Error();
+    }
+    return handlers[handlerId].handler;
+};

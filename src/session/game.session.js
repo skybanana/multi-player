@@ -8,13 +8,11 @@ export const addGameSession = (id) => {
 };
 
 export const removeGameSession = (id) => {
-  const index = gameSessions.findIndex((session) => session.id === id);
-  if (index !== -1) {
-    return gameSessions.splice(index, 1)[0];
-  }
+  delete gameSessions[0]
 };
 
 export const getGameSession = (id) => {
+  return gameSessions[0]
   return gameSessions.find((session) => session.id === id);
 };
 

@@ -1,5 +1,7 @@
 import { config } from '../config/config.js';
+import { PACKET_TYPE } from '../constants/header.js';
 import { packetParser } from '../utils/parser/packetParser.js';
+import { getHandlerById } from '../handler/index.js';
 
 export const onData = (socket) => async (data) => {
   socket.buffer = Buffer.concat([socket.buffer, data])
@@ -13,8 +15,14 @@ export const onData = (socket) => async (data) => {
       const packet = socket.buffer.subarray(totalHeaderLength, length);
       socket.buffer = socket.buffer.subarray(length);
       try{
-        const result = packetParser(packet);
-        console.log(result)
+        switch (packetType) {
+          case PACKET_TYPE.NORMAL: {
+            const { handlerId, userId, payload } = packetParser(packet);
+            const handler = getHandlerById(handlerId);
+
+            handler( { socket, userId, payload })
+          }
+        }
       }catch(e) {
         console.error(e)
       }
@@ -22,6 +30,4 @@ export const onData = (socket) => async (data) => {
 
     }
   }
-
-  console.log(data)
 };

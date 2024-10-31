@@ -13,8 +13,6 @@ export const packetParser = (data) => {
         console.error("Socket Decode " + e);
     }
 
-    console.log(packet)
-
     const handlerId = packet.handlerId;
     const userId = packet.userId;
     const clientVersion = packet.clientVersion;
@@ -30,7 +28,6 @@ export const packetParser = (data) => {
     }
 
     const [namespace, typeName] = protoType.split('.');
-    console.log(namespace, typeName)
     const payloadType = protoMessages[namespace][typeName];
     
     let payload
@@ -40,7 +37,7 @@ export const packetParser = (data) => {
     } catch (e) {
         console.error("decode Error : " + e);
     }
-
+    
     const expectedFields = Object.keys(payloadType.fields);
     const actualFields = Object.keys(payload);
     const missingFields = expectedFields.filter((field) => !actualFields.includes(field));
@@ -48,5 +45,5 @@ export const packetParser = (data) => {
         throw Error();
     }
 
-    return { handlerId, userId, payload}
+    return { handlerId, userId, payload }
 };
