@@ -6,7 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "node ./src/server.js"
+    "dev": "node ./src/server.js",
+    "migrate": "node ./src/db/migrations/createSchema.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.7",

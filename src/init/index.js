@@ -1,4 +1,5 @@
 import { addGameSession } from "../session/game.session.js";
+import { testConnection } from "../utils/testConnection/testConnection.js";
 import { loadProtos } from "./loadProto.js";
 import { v4 as uuidv4} from 'uuid'
 
@@ -8,6 +9,7 @@ const initServer = async () => {
         const gameId = uuidv4();
         const gameSession = addGameSession(gameId);
         console.log(gameSession)
+        await testConnection();
     } catch (e){
         console.log(e)
         process.exit(1)
