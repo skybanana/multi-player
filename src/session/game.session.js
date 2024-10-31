@@ -1,5 +1,5 @@
-import { gameSessions } from './sessions.js';
-import Game from '../classes/models/game.class.js';
+import { gameSessions } from "./sessions.js";
+import Game from "../classes/models/game.class.js";
 
 export const addGameSession = (id) => {
   const session = new Game(id);
@@ -8,12 +8,11 @@ export const addGameSession = (id) => {
 };
 
 export const removeGameSession = (id) => {
-  delete gameSessions[0]
+  delete gameSessions[0];
 };
 
 export const getGameSession = (id) => {
-  return gameSessions[0]
-  return gameSessions.find((session) => session.id === id);
+  return gameSessions[0];
 };
 
 export const getAllGameSessions = () => {

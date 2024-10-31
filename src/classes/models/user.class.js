@@ -1,3 +1,5 @@
+import { createPingPacket } from "../../utils/notification/game.notification.js";
+
 class User {
   constructor(socket, id, playerId, latency, coords) {
     this.socket = socket;
@@ -22,7 +24,7 @@ class User {
 
   ping() {
     const now = Date.now();
-    this.socket.write("");
+    this.socket.write(createPingPacket(now));
   }
 
   handlePong(data) {
@@ -31,7 +33,6 @@ class User {
     console.log(`pong ${this.id} : ${now} with latency ${this.latency}ms`);
   }
 
-  // 추측항법을 사용하여 위치를 추정하는 메서드
   calculatePosition(latency) {
     if (this.x === this.lastX && this.y === this.lastY) {
       return {
@@ -46,7 +47,6 @@ class User {
     const directionY =
       this.y !== this.lastY ? Math.sign(this.y - this.lastY) : 0;
 
-    // x, y 축에서 이동한 거리 계산
     return {
       x: this.x + directionX * distance,
       y: this.y + directionY * distance,

@@ -1,5 +1,5 @@
-import { updateUserLocation } from '../db/user/user.db.js';
-import { userSessions } from './sessions.js';
+import { updateUserLocation } from "../db/user/user.db.js";
+import { userSessions } from "./sessions.js";
 
 export const addUser = (user) => {
   userSessions.push(user);
@@ -13,4 +13,8 @@ export const removeUser = async (socket) => {
     await updateUserLocation(user.x, user.y, user.id);
     return userSessions.splice(index, 1)[0];
   }
+};
+
+export const getUserBySocket = (socket) => {
+  return userSessions.find((user) => user.socket === socket);
 };
