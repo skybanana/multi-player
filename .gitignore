@@ -122,3 +122,5 @@ dist
 
 # prisma generated 무시
 **/generated/
+
+node_game/
