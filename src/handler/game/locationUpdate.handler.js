@@ -1,5 +1,7 @@
 import { getGameSession } from "../../session/game.session.js";
 
+// 자신의 위치를 갱신
+// 클라이언트에게 다른 유저의 위치를 반환함.
 const locationUpdateHandler = ({socket, userId, payload}) => {
     try {
         const { x, y } = payload;

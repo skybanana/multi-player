@@ -1,3 +1,7 @@
+/**
+ * protobuf 폴더 하위에 패킷의 정의 내용을 로드하는 유틸리티
+ * protoMassage 객체 형태로 저장됨.
+ */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -6,7 +10,6 @@ import { packetNames } from '../protobuf/packetName.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const protoDir = path.join(__dirname, '../protobuf');
 
 // 해당 폴더의 하위 폴더를 포함해 내부에 proto 파일을 전부 가져옴.

@@ -1,3 +1,7 @@
+/**
+ * 각 클라이언트와 서버와의 통신 레이턴시를 측정
+ * 각 클라이언트들을 관리하는 메니저 코드
+ */
 class LatencyManager {
   constructor() {
     this.intervals = new Map();
