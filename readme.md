@@ -24,7 +24,7 @@
 ├── 📂 handlers
 │   ├── 📂 user            # 사용자의 생성 및 초기화 핸들러 포함
 │   ├── 📂 game            # 세션 참여자들의 위치 갱신 핸들러 포함
-│   └── 🟨 index.js        # 초기 핸들러
+│   └── 🟨 index.js        # 응답 패킷의 타입에 따라 핸들러를 반환
 ├── 📂 init
 │   ├── 🟨 index.js        # 서버 초기화 로직 파일
 │   └── 🟨 loadProtos.js   # Protobuf 파일들을 로드하고 설정하는 기능
