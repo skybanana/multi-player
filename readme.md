@@ -47,3 +47,6 @@
 ├── 🟩 .env                # 환경 변수 설정 파일, DB, 프라이빗 IP 등 서버 정보 관리
 
 ```
+
+### 트러블 슈팅
+- [트러블슈팅 문서](https://chain-beat-4be.notion.site/130bc084cb4880b7a450c8fd9d655020?pvs=4)
