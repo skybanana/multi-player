@@ -31,11 +31,11 @@
 ├── 📂 protobuf
 │   ├── 📂 notification    # 알림과 관련된 Protobuf 메시지 정의
 │   ├── 📂 request         # 클라이언트 요청에 대한 Protobuf 메시지 정의
-│   └── 📂 response        # 서버 응답에 대한 Protobuf 메시지 정의
+│   ├── 📂 response        # 서버 응답에 대한 Protobuf 메시지 정의
 │   └── 🟨 packetName.js   # 서버 응답에 대한 Protobuf 메시지 정의
 ├── 📂 session
-│   └── 🟨 game.session.js # 게임 세션 관리를 위한 파일
-│   └── 🟨 session.js      # 세션이 저장되는 리스트
+│   ├── 🟨 game.session.js # 게임 세션 관리를 위한 파일
+│   ├── 🟨 session.js      # 세션이 저장되는 리스트
 │   └── 🟨 user.session.js # 사용자 세션 관리를 위한 파일
 ├── 📂 utils
 │   ├── 📂 notification    # 위치 갱신, 핑 체크 등 유틸리티 코드
