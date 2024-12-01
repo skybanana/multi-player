@@ -8,9 +8,9 @@ import { getUserBySocket } from "../session/user.session.js";
 // 클라이언트의 패킷이 도착했을 때 파싱함.
 // 핸들러를 통해 패킷 타입에 맞는 함수를 동작시킴.
 export const onData = (socket) => async (data) => {
+  console.log(socket.buffer.readUInt32BE(0))
   socket.buffer = Buffer.concat([socket.buffer, data]);
-  const totalHeaderLength =
-    config.packet.totalLength + config.packet.typeLength;
+  const totalHeaderLength = config.packet.totalLength + config.packet.typeLength;
 
   while (socket.buffer.length >= totalHeaderLength) {
     const length = socket.buffer.readUInt32BE(0);
